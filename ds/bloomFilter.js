@@ -1,10 +1,3 @@
-/**
- * Bloom filters take a set and can
- * definitely say whether an element
- * is _not_ in the set but can only
- * probabilistically say whether an
- * element _is_ in the set
- */
 import md5 from "md5";
 import sha256Obj from "hash.js/lib/hash/sha/512";
 const sha256 = val =>
@@ -12,6 +5,13 @@ const sha256 = val =>
     .digest(val)
     .join("");
 
+/**
+ * Bloom filters take a set and can
+ * definitely say whether an element
+ * is _not_ in the set but can only
+ * probabilistically say whether an
+ * element _is_ in the set
+ */
 class BloomFilter {
   constructor() {
     // The first step is to create an array
