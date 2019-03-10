@@ -1,3 +1,11 @@
+/**
+ * IT TURNS OUT THAT PEOPLE DON'T USE THE TERM
+ * BREADTH-FIRST-SEARCH WHEN CONSIDERING WEIGHTED
+ * GRAPHS AND INSTEAD WHAT I CREATED HERE IS A KIND
+ * OF NAIVE VERSION OF DJIKSTRA'S ALGORITHM, WITH
+ * A LOT OF REDUNDANT CALCULATIONS
+ */
+
 // Directed, weighted graph
 const graph = {
   G: [["R", 4], ["B", 1]],
@@ -25,6 +33,7 @@ const bfs = (graph, origin) => {
       edges = currNode[0],
       // Distance to current node from origin
       currDistance = currNode[1];
+    console.log(currNode);
 
     // If you've reached the destination
     // (which has no further edges), log
