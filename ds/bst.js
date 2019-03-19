@@ -6,7 +6,7 @@ class Node {
   }
 }
 
-class BST {
+export default class BST {
   constructor(initVal) {
     this.root = new Node(initVal);
   }
@@ -51,11 +51,11 @@ class BST {
   }
 }
 
-let bst = new BST(8);
-bst.insert(3);
-bst.insert(10);
-bst.insert(1);
-bst.insert(6);
-bst.insert(14);
-console.log(bst);
-console.log(bst.search(6));
+// let bst = new BST(8);
+// bst.insert(3);
+// bst.insert(10);
+// bst.insert(1);
+// bst.insert(6);
+// bst.insert(14);
+// console.log(bst);
+// console.log(bst.search(6));
