@@ -2,7 +2,6 @@
  * Given a list of scores and a highest possible
  * score, sort the list in _less than_ O(n log n) time
  */
-
 const unsortedScores = [37, 89, 41, 65, 91, 53];
 const HIGHEST_POSSIBLE_SCORE = 100;
 

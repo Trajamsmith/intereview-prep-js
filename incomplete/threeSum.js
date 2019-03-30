@@ -1,29 +1,54 @@
+import { expect } from "chai";
+
 /**
  * Given an array of integers, return all combinations of
- * three elements where the elements sum to zero
+ * three elements where the elements sum to zero--so I tried
+ * to do this by doing a O(n^2) operation to keep a hash
+ * of all two-sum pairs, then a linear operation back over
+ * the array to get the three-sums, but that was super
+ * tedious and had a lot of edge cases, so here's this
+ * much simpler algorithm
  */
-
-// TODO: fix this solution, on the right track though
 const threeSum = nums => {
-  const twoSums = {},
-    output = [];
+  const output = [];
+  nums.sort();
 
-  nums.forEach((num1, i) => {
-    nums.forEach((num2, j) => {
-      if (j > i) {
-        twoSums[num1 + num2] = [num1, num2, [i, j]];
+  for (let i = 0; i < nums.length; i++) {
+    let target = -nums[i],
+      j = i + 1,
+      e = nums.length - 1;
+
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+
+    while (j < e) {
+      if (nums[j] + nums[e] === target) {
+        output.push([nums[i], nums[j], nums[e]]);
+        j++;
+        while (j < e && nums[j] === nums[j - 1]) {
+          j++;
+        }
+      } else if (nums[j] + nums[e] < target) {
+        j++;
+      } else {
+        e--;
       }
-    });
-  });
-
-  nums.forEach((num, ind) => {
-    const coords = twoSums[-num] && twoSums[-num][2];
-    if (coords && ind !== coords[0] && ind !== coords[1]) {
-      output.push([twoSums[-num][0], twoSums[-num][1], num]);
     }
-  });
+  }
 
   return output;
 };
 
-console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+expect(threeSum([-1, 0, 1, 2, -1, -4])).to.deep.equal([
+  [-1, -1, 2],
+  [-1, 0, 1]
+]);
+expect(
+  threeSum([-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6])
+).to.deep.equal([
+  [-4, -2, 6],
+  [-4, 0, 4],
+  [-4, 1, 3],
+  [-4, 2, 2],
+  [-2, -2, 4],
+  [-2, 0, 2]
+]);

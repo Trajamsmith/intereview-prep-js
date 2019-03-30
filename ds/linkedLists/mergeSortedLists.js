@@ -11,10 +11,10 @@ function ListNode(val) {
  */
 var mergeTwoLists = function(l1, l2) {
   var nl = new ListNode(),
-    nl = prehead;
+    prehead = nl;
 
   while (l1 && l2) {
-    if (l1.val >= l2.val) {
+    if (l1.val <= l2.val) {
       nl.next = new ListNode(l1.val);
       l1 = l1.next;
       nl = nl.next;
